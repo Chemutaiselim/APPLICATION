@@ -1,15 +1,16 @@
 package com.pamela.gads
 
 import android.content.Context
+import android.provider.ContactsContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.*
 
-class NoteRecyclerAdapter( private val context: Context) : RecyclerView.Adapter<NoteRecyclerAdapter.ViewHolder>(){
+class NoteRecyclerAdapter( private val context: Context, private val notes:List<E>)
+    : RecyclerView.Adapter<NoteRecyclerAdapter.ViewHolder>(){
 
     private val layoutInflater= LayoutInflater.from(context)
 
@@ -24,15 +25,18 @@ class NoteRecyclerAdapter( private val context: Context) : RecyclerView.Adapter<
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         //it is responsible for displaying the data
+        val note = notes[position]
+        holder.textCourse?.text= note.course.title
+        holder.textTitle?.text=note.title
     }
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+      //shows how much data needs to be displayed
     }
-    class ViewHolder (itemView: View): RecyclerView.ViewHolder(itemView) {
+    class ViewHolder (itemView: View?): RecyclerView.ViewHolder(itemView!!) {
         // Here we get reference to the text we are to use in that particular view holder
         //the item to be displayed in the views include textcourse and the text title; hence;
-        var textCourse =itemView.findViewById<TextView>(R.id.textCourse)
-        var textTitle=itemView.findViewById<TextView>(R.id.textTitle)
+        var textCourse =itemView?.findViewById<TextView?>(R.id.textCourse)
+        var textTitle=itemView?.findViewById<TextView?>(R.id.textTitle)
 
     }
 }
