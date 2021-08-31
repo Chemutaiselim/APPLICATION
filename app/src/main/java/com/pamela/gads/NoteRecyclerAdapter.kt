@@ -1,7 +1,6 @@
 package com.pamela.gads
 
 import android.content.Context
-import android.provider.ContactsContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.*
 
-class NoteRecyclerAdapter( private val context: Context, private val notes:List<E>)
+class NoteRecyclerAdapter( private val context: Context, private val notes:List<NoteInfo>)
     : RecyclerView.Adapter<NoteRecyclerAdapter.ViewHolder>(){
 
     private val layoutInflater= LayoutInflater.from(context)
